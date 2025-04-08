@@ -36,7 +36,7 @@ const Section44 = () => {
 
   // ✅ GSAP Scroll Animations
   useEffect(() => {
-    if (products.length === 0) return; // Ensure products are loaded
+    if (products.length === 0) return;
 
     gsap.fromTo(
       sectionRef.current,
@@ -73,7 +73,6 @@ const Section44 = () => {
       }
     );
 
-    // ✅ Animate Each Product on Scroll
     productRefs.current.forEach((el) => {
       if (el) {
         gsap.fromTo(
@@ -112,7 +111,6 @@ const Section44 = () => {
 
     addToCart(product);
 
-    // ✅ Show SweetAlert2 Notification
     Swal.fire({
       title: "Added to Cart! 🛒",
       text: `${product.title} has been added to your cart.`,
@@ -126,7 +124,7 @@ const Section44 = () => {
 
   return (
     <div>
-      <div ref={sectionRef} className="px-16 py-16 xs:px-3">
+      <div ref={sectionRef} className="px-3 sm:px-16 py-16">
         {/* 🔴 Section Header */}
         <div className="flex items-center gap-4">
           <div className="w-8 h-12 rounded-md bg-[#db4444]"></div>
@@ -134,13 +132,13 @@ const Section44 = () => {
         </div>
 
         <div className="flex justify-between mt-5">
-          <h1 ref={titleRef} className="text-4xl font-bold xs:w-20 xs:px-2">
+          <h1 ref={titleRef} className="text-4xl font-bold sm:w-20 sm:px-2">
             Best Selling Products
           </h1>
           <Link to="/AllProducts">
             <button
               ref={buttonRef}
-              className="bg-[#db4444] py-3 px-11 rounded-md text-white xs:text-sm  "
+              className="bg-[#db4444] py-3 px-11 rounded-md text-white text-sm"
             >
               View All
             </button>
@@ -158,7 +156,6 @@ const Section44 = () => {
                 ref={(el) => (productRefs.current[index] = el)}
                 className="bg-transparent p-4 rounded-lg relative group hover:scale-105 transition-transform duration-300"
               >
-                {/* ✅ Product Image (Click to Show Button) */}
                 <img
                   src={product.images[0]}
                   alt={product.title}
@@ -166,22 +163,21 @@ const Section44 = () => {
                   onClick={() => handleShowButton(product.id)}
                 />
 
-                {/* ✅ Product Info */}
                 <h2 className="text-lg font-semibold mt-3 text-black">
                   {product.title}
                 </h2>
                 <p className="text-yellow-400 mt-2">${product.price}</p>
 
-                {/* ✅ Star Rating (Default = 4 stars) */}
                 <p className="text-yellow-300 mt-1 mb-5">
                   {"★".repeat(Math.round(product.rating || 4))}
                   {"☆".repeat(5 - Math.round(product.rating || 4))}
                 </p>
 
-                {/* ✅ Add to Cart Button (Hidden until Image Click) */}
                 <div
-                  className={` bg-black absolute bottom-0 left-0 right-0 transition-transform duration-500 ${
-                    visibleButtons[product.id] ? "translate-y-0 opacity-0 addtocart" : "translate-y-5 addtocart opacity-100"
+                  className={`bg-black absolute bottom-0 left-0 right-0 transition-transform duration-500 ${
+                    visibleButtons[product.id]
+                      ? "translate-y-0 opacity-0 addtocart"
+                      : "translate-y-5 opacity-100 addtocart"
                   }`}
                 >
                   <button

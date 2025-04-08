@@ -48,7 +48,7 @@ const Section3 = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="px-16 xs:px-3 ">
+    <div ref={sectionRef} className="px-3 sm:px-16">
       {/* 🔴 Section Title */}
       <div className="flex items-center gap-4">
         <div className="w-8 h-12 rounded-md bg-[#db4444]"></div>

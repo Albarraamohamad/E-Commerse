@@ -107,7 +107,7 @@ const Section5 = () => {
   };
 
   return (
-    <div ref={sectionRef} className="px-16 py-28 xs:px-3">
+    <div ref={sectionRef} className=" py-28 px-3 sm:px-16">
       <div className="flex items-center gap-4">
         <div className="w-8 h-12 rounded-md bg-[#db4444]"></div>
         <h1 className="text-2xl text-[#db4444] font-bold">Our Products</h1>
